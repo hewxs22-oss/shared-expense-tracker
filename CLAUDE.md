@@ -4,7 +4,7 @@
 
 WebFetch 失败时按顺序重试，不让用户手动操作：
 1. **curl**：静态页面
-2. **Playwright**：JS 渲染 / Cloudflare（`/Users/wx/.local/share/uv/tools/playwright/bin/python3`）
+2. **Playwright**：JS 渲染 / Cloudflare（`/home/user/.local/share/uv/tools/playwright/bin/python3`）
 3. 以上都失败才告知用户，并建议找 PubMed Central / arXiv / ResearchGate 的开放版本
 
 ## 项目概览
@@ -20,7 +20,7 @@ WebFetch 失败时按顺序重试，不让用户手动操作：
 判断消息是否财务相关（记账/查询/购物意图），如果是，运行：
 
 ```bash
-cd /Users/wx/Documents/shared-expense-tracker
+cd /home/user/shared-expense-tracker
 uv run python scripts/ledger_handler.py "发送者姓名" "消息内容"
 ```
 
