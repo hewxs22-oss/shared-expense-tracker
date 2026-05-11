@@ -73,12 +73,13 @@
   </p>
 
   {% for q in ecr_questions %}
+  {% set qnum = loop.index %}
   <div class="question">
-    <p>{{ loop.index }}. {{ q }}</p>
+    <p>{{ qnum }}. {{ q }}</p>
     <div class="scale">
       {% for i in range(1, 8) %}
       <label>
-        <input type="radio" name="ecr_{{ loop.index }}" value="{{ i }}" required>
+        <input type="radio" name="ecr_{{ qnum }}" value="{{ i }}" required>
         {{ i }}
       </label>
       {% endfor %}
@@ -107,12 +108,13 @@
   </p>
 
   {% for q in kmsi_questions %}
+  {% set qnum = loop.index %}
   <div class="question">
-    <p>{{ loop.index + 36 }}. {{ q }}</p>
+    <p>{{ qnum + 36 }}. {{ q }}</p>
     <div class="scale">
       {% for i in range(1, 7) %}
       <label>
-        <input type="radio" name="kmsi_{{ loop.index }}" value="{{ i }}" required>
+        <input type="radio" name="kmsi_{{ qnum }}" value="{{ i }}" required>
         {{ i }}
       </label>
       {% endfor %}
