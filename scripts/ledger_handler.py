@@ -101,7 +101,7 @@ def handle(sender_name: str, text: str) -> str:
         if "开始填写问卷" in text or "填问卷" in text:
             base_url = CONFIG.get("form", {}).get("vercel_url", "").rstrip("/")
             if not base_url:
-                host = CONFIG.get("form", {}).get("host", "192.168.1.3")
+                host = CONFIG.get("form", {}).get("host", "127.0.0.1")
                 port = CONFIG.get("form", {}).get("port", 5001)
                 base_url = f"http://{host}:{port}"
             w_name = CONFIG["users"]["W"]

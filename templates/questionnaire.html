@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>金钱依恋风格问卷</title>
+<title>金钱依恋风格问卷 / Money Attachment Style Questionnaire</title>
 <style>
   body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; background: #fff; color: #000; }
   h1 { font-size: 20px; }
@@ -14,29 +14,62 @@
   .scale { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   .scale label { display: flex; flex-direction: column; align-items: center; font-size: 12px; gap: 4px; cursor: pointer; }
   .scale-labels { display: flex; justify-content: space-between; font-size: 11px; color: #666; margin-top: 4px; }
-  button { margin-top: 40px; padding: 10px 30px; font-size: 16px; cursor: pointer; }
+  button[type="submit"] { margin-top: 40px; padding: 10px 30px; font-size: 16px; cursor: pointer; }
   .error { color: red; font-size: 13px; display: none; }
   .section-note { font-size: 13px; color: #444; margin: 10px 0 20px 0; }
+  .lang-toggle { text-align: right; margin-bottom: 16px; }
+  .lang-toggle button { background: none; border: 1px solid #000; padding: 4px 12px; font-size: 13px; cursor: pointer; border-radius: 3px; }
+  .lang-toggle button.active { background: #000; color: #fff; }
+  [data-lang] { display: none; }
 </style>
 </head>
 <body>
 
-<h1>金钱依恋风格问卷</h1>
-<p>你好，<strong>{{ user_name }}</strong>。</p>
+<div class="lang-toggle">
+  <button id="btn-zh" class="active" onclick="setLang('zh')">中文</button>
+  <button id="btn-en" onclick="setLang('en')">English</button>
+</div>
+
+<h1>
+  <span data-lang="zh">金钱依恋风格问卷</span>
+  <span data-lang="en">Money Attachment Style Questionnaire</span>
+</h1>
+<p>
+  <span data-lang="zh">你好，<strong>{{ user_name }}</strong>。</span>
+  <span data-lang="en">Hello, <strong>{{ user_name }}</strong>.</span>
+</p>
 
 <div class="notice">
-  请独立填写，不要和对方讨论后再作答。<br>
-  共 68 道题，大约需要 10-15 分钟。<br>
-  每道题请根据你的真实感受作答，没有对错之分。
+  <span data-lang="zh">
+    请独立填写，不要和对方讨论后再作答。<br>
+    共 68 道题，大约需要 10-15 分钟。<br>
+    每道题请根据你的真实感受作答，没有对错之分。
+  </span>
+  <span data-lang="en">
+    Please fill this out independently — do not discuss with your partner first.<br>
+    68 questions total, approximately 10–15 minutes.<br>
+    Answer based on how you genuinely feel. There are no right or wrong answers.
+  </span>
 </div>
 
 <form id="questionnaire" method="POST" action="/submit">
   <input type="hidden" name="user" value="{{ user }}">
 
   <!-- ECR-R -->
-  <h2>第一部分：亲密关系感受（共 36 题）</h2>
-  <p class="section-note">以下问题关于你在亲密关系中的感受。请根据你<strong>通常</strong>的感受作答，而不是某一次特定的经历。<br>
-  评分：1 = 完全不同意，7 = 完全同意</p>
+  <h2>
+    <span data-lang="zh">第一部分：亲密关系感受（共 36 题）</span>
+    <span data-lang="en">Part 1: Experiences in Close Relationships (36 questions)</span>
+  </h2>
+  <p class="section-note">
+    <span data-lang="zh">
+      以下问题关于你在亲密关系中的感受。请根据你<strong>通常</strong>的感受作答，而不是某一次特定的经历。<br>
+      评分：1 = 完全不同意，7 = 完全同意
+    </span>
+    <span data-lang="en">
+      The following questions concern how you feel in close relationships. Please respond based on how you <strong>generally</strong> feel, not just in one specific relationship.<br>
+      Scale: 1 = Disagree strongly, 7 = Agree strongly
+    </span>
+  </p>
 
   {% for q in ecr_questions %}
   <div class="question">
@@ -50,16 +83,27 @@
       {% endfor %}
     </div>
     <div class="scale-labels">
-      <span>完全不同意</span>
-      <span>完全同意</span>
+      <span data-lang="zh">完全不同意</span><span data-lang="en">Disagree strongly</span>
+      <span data-lang="zh">完全同意</span><span data-lang="en">Agree strongly</span>
     </div>
   </div>
   {% endfor %}
 
   <!-- KMSI-R -->
-  <h2>第二部分：金钱信念（共 32 题）</h2>
-  <p class="section-note">以下问题关于你对金钱的看法和信念。<br>
-  评分：1 = 强烈不同意，6 = 强烈同意</p>
+  <h2>
+    <span data-lang="zh">第二部分：金钱信念（共 32 题）</span>
+    <span data-lang="en">Part 2: Money Beliefs (32 questions)</span>
+  </h2>
+  <p class="section-note">
+    <span data-lang="zh">
+      以下问题关于你对金钱的看法和信念。<br>
+      评分：1 = 强烈不同意，6 = 强烈同意
+    </span>
+    <span data-lang="en">
+      The following questions concern your beliefs and attitudes about money.<br>
+      Scale: 1 = Strongly disagree, 6 = Strongly agree
+    </span>
+  </p>
 
   {% for q in kmsi_questions %}
   <div class="question">
@@ -73,26 +117,42 @@
       {% endfor %}
     </div>
     <div class="scale-labels">
-      <span>强烈不同意</span>
-      <span>强烈同意</span>
+      <span data-lang="zh">强烈不同意</span><span data-lang="en">Strongly disagree</span>
+      <span data-lang="zh">强烈同意</span><span data-lang="en">Strongly agree</span>
     </div>
   </div>
   {% endfor %}
 
-  <p class="error" id="error-msg">请完成所有题目后再提交。</p>
-  <button type="submit">提交问卷</button>
+  <p class="error" id="error-msg">
+    <span data-lang="zh">请完成所有题目后再提交。</span>
+    <span data-lang="en">Please answer all questions before submitting.</span>
+  </p>
+  <button type="submit">
+    <span data-lang="zh">提交问卷</span>
+    <span data-lang="en">Submit</span>
+  </button>
 </form>
 
 <script>
+function setLang(lang) {
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+  });
+  document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.documentElement.lang = lang;
+  localStorage.setItem('questionnaire-lang', lang);
+}
+
+// init: use saved preference or default to zh
+setLang(localStorage.getItem('questionnaire-lang') || 'zh');
+
 document.getElementById('questionnaire').addEventListener('submit', function(e) {
-  const radios = this.querySelectorAll('input[type="radio"]');
   const names = new Set();
-  radios.forEach(r => names.add(r.name));
+  this.querySelectorAll('input[type="radio"]').forEach(r => names.add(r.name));
   let allAnswered = true;
   names.forEach(name => {
-    if (!this.querySelector(`input[name="${name}"]:checked`)) {
-      allAnswered = false;
-    }
+    if (!this.querySelector(`input[name="${name}"]:checked`)) allAnswered = false;
   });
   if (!allAnswered) {
     e.preventDefault();
