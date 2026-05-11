@@ -46,9 +46,9 @@ uv run python scripts/ledger_handler.py "发送者姓名" "消息内容"
 
 ## 核心约定
 
-- 所有财务相关对话必须在飞书群「招财猫记」中进行
+- 所有财务相关对话必须在飞书群（群名在 config.json 中配置）中进行
 - 账本数据（data/ledger.csv）和 API keys（.env）不上传 GitHub
-- 购物意图写入苹果提醒事项「暂存库」，标题加「🛒」前缀
+- 购物意图写入苹果提醒事项（列表名在 config.json 中配置），标题加「🛒」前缀
 - assets/ 目录存放设计图（SVG），已上传 GitHub
 
 ## 技术栈
@@ -65,6 +65,6 @@ uv run python scripts/ledger_handler.py "发送者姓名" "消息内容"
 
 1. ✅ 核心记账（飞书消息 → Claude 解析 → CSV → 确认回复）
 2. ✅ 查询和月报
-3. ✅ 购物意图识别 → 暂存库
+3. ✅ 购物意图识别 → 提醒事项列表
 4. ✅ 消费价值观对话系统
 5. ✅ 金钱依恋风格问卷（ECR-R + KMSI-R + 系统模式选择）

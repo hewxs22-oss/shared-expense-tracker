@@ -83,7 +83,7 @@ The questionnaire form runs separately on Vercel (free tier), using Vercel KV to
 ### 1. Clone and configure
 
 ```bash
-git clone https://github.com/hewxs22-oss/shared-expense-tracker
+git clone https://github.com/your-username/shared-expense-tracker
 cd shared-expense-tracker
 cp config.example.json config.json
 ```
@@ -128,7 +128,7 @@ A hosted version is available at https://shared-expense-tracker-mu.vercel.app â€
 uv run python scripts/bot.py
 ```
 
-Or use [cc-connect](https://github.com/hewxs22-oss/cc-connect) for a persistent background process that auto-starts on login.
+Or use [cc-connect](https://github.com/chenhg5/cc-connect) for a persistent background process that auto-starts on login.
 
 ---
 

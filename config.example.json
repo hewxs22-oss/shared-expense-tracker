@@ -19,7 +19,7 @@
     "chat_id": ""
   },
   "reminders": {
-    "list_name": "暂存库",
+    "list_name": "提醒事项列表名称",
     "shopping_prefix": "🛒"
   },
   "report": {
