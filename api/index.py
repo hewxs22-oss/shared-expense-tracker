@@ -6,11 +6,17 @@ from upstash_redis import Redis
 
 app = Flask(__name__, template_folder="../templates")
 
+# Load config from environment variables (Vercel) or fall back to config.json (local)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CONFIG_PATH = os.path.join(BASE_DIR, "config.json")
 
-with open(CONFIG_PATH) as f:
-    CONFIG = json.load(f)
+if os.path.exists(CONFIG_PATH):
+    with open(CONFIG_PATH) as f:
+        CONFIG = json.load(f)
+else:
+    # On Vercel: read users from USERS_JSON env var, e.g. '{"W":"Wency","J":"James"}'
+    users_json = os.environ.get("USERS_JSON", '{"W":"User1","J":"User2"}')
+    CONFIG = {"users": json.loads(users_json)}
 
 FORM_DATA_KEY = "form_data"
 
