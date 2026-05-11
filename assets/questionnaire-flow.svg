@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+<defs>
+  <filter id="f">
+    <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="17" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6 Z" fill="#333"/>
+  </marker>
+</defs>
+
+<rect width="800" height="420" fill="#faf8f2"/>
+
+<text x="400" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="#1a1a1a">Questionnaire Flow</text>
+<text x="400" y="57" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#888" font-style="italic">ECR-R · KMSI-R · attachment-aware mode selection</text>
+
+<!-- trigger -->
+<rect x="270" y="72" width="260" height="44" rx="5" fill="#dbeafe" stroke="#333" stroke-width="1.8" filter="url(#f)"/>
+<text x="400" y="90" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#1a1a1a">"fill out the questionnaire"</text>
+<text x="400" y="107" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555" font-style="italic">sent in chat → bot replies with two links</text>
+
+<!-- arrow down, splits -->
+<line x1="400" y1="116" x2="400" y2="138" stroke="#333" stroke-width="1.5" filter="url(#f)"/>
+<line x1="400" y1="138" x2="210" y2="138" stroke="#333" stroke-width="1.5" filter="url(#f)"/>
+<line x1="400" y1="138" x2="590" y2="138" stroke="#333" stroke-width="1.5" filter="url(#f)"/>
+<line x1="210" y1="138" x2="210" y2="158" stroke="#333" stroke-width="1.5" marker-end="url(#arr)" filter="url(#f)"/>
+<line x1="590" y1="138" x2="590" y2="158" stroke="#333" stroke-width="1.5" marker-end="url(#arr)" filter="url(#f)"/>
+
+<!-- W fills -->
+<rect x="110" y="158" width="200" height="54" rx="5" fill="#fef9c3" stroke="#333" stroke-width="1.8" filter="url(#f)"/>
+<text x="210" y="179" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a">W fills form</text>
+<text x="210" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666" font-style="italic">36 + 32 questions · independently</text>
+
+<!-- J fills -->
+<rect x="490" y="158" width="200" height="54" rx="5" fill="#fef9c3" stroke="#333" stroke-width="1.8" filter="url(#f)"/>
+<text x="590" y="179" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a">J fills form</text>
+<text x="590" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666" font-style="italic">36 + 32 questions · independently</text>
+
+<!-- both arrows converge -->
+<line x1="210" y1="212" x2="210" y2="234" stroke="#333" stroke-width="1.5" filter="url(#f)"/>
+<line x1="590" y1="212" x2="590" y2="234" stroke="#333" stroke-width="1.5" filter="url(#f)"/>
+<line x1="210" y1="234" x2="390" y2="234" stroke="#333" stroke-width="1.5" filter="url(#f)"/>
+<line x1="590" y1="234" x2="410" y2="234" stroke="#333" stroke-width="1.5" filter="url(#f)"/>
+<line x1="400" y1="234" x2="400" y2="254" stroke="#333" stroke-width="1.5" marker-end="url(#arr)" filter="url(#f)"/>
+
+<!-- note: waits for both -->
+<text x="400" y="248" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa" font-style="italic">waits until both submit</text>
+
+<!-- AI calculates -->
+<rect x="270" y="262" width="260" height="54" rx="5" fill="#ede9fe" stroke="#333" stroke-width="1.8" filter="url(#f)"/>
+<text x="400" y="283" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a">Claude API scores results</text>
+<text x="400" y="301" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666" font-style="italic">ECR-R anxiety/avoidance · KMSI-R money scripts</text>
+
+<!-- arrow down -->
+<line x1="400" y1="316" x2="400" y2="336" stroke="#333" stroke-width="1.5" marker-end="url(#arr)" filter="url(#f)"/>
+
+<!-- report pushed -->
+<rect x="270" y="336" width="260" height="54" rx="5" fill="#dcfce7" stroke="#333" stroke-width="1.8" filter="url(#f)"/>
+<text x="400" y="357" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a">Report pushed to chat</text>
+<text x="400" y="375" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666" font-style="italic">attachment style · money scripts · suggested mode</text>
+
+<!-- watermark -->
+<text x="790" y="415" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#ccc">github.com/hewxs22-oss</text>
+</svg>

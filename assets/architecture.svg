@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+<defs>
+  <filter id="f">
+    <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="42" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6 Z" fill="#333"/>
+  </marker>
+  <marker id="arr-gray" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L8,3 L0,6 Z" fill="#aaa"/>
+  </marker>
+</defs>
+
+<!-- paper background -->
+<rect width="800" height="500" fill="#faf8f2"/>
+
+<!-- title -->
+<text x="400" y="40" text-anchor="middle" font-family="Georgia,serif" font-size="20" font-weight="bold" fill="#1a1a1a">System Architecture</text>
+<text x="400" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#888" font-style="italic">platform-agnostic · AI-powered · relationship-first</text>
+
+<!-- section label -->
+<text x="48" y="104" font-family="Georgia,serif" font-size="10" fill="#bbb" font-style="italic">messaging</text>
+
+<!-- Feishu/Lark box -->
+<rect x="150" y="84" width="160" height="50" rx="5" fill="#dbeafe" stroke="#333" stroke-width="1.8" filter="url(#f)"/>
+<text x="230" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1e3a5f">Feishu / Lark</text>
+<text x="230" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#4a6fa5" font-style="italic">current</text>
+
+<!-- Future App box (dashed) -->
+<rect x="330" y="84" width="160" height="50" rx="5" fill="#f5f5f5" stroke="#bbb" stroke-width="1.5" stroke-dasharray="6,3" filter="url(#f)"/>
+<text x="410" y="105" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#aaa">Future App</text>
+<text x="410" y="123" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#bbb" font-style="italic">plug in any platform</text>
+
+<!-- arrows to bot engine -->
+<line x1="230" y1="134" x2="278" y2="188" stroke="#333" stroke-width="1.5" marker-end="url(#arr)" filter="url(#f)"/>
+<line x1="410" y1="134" x2="362" y2="188" stroke="#bbb" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-gray)" filter="url(#f)"/>
+
+<!-- Bot Engine -->
+<rect x="195" y="188" width="210" height="54" rx="5" fill="#fef9c3" stroke="#333" stroke-width="2" filter="url(#f)"/>
+<text x="300" y="210" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-weight="bold" fill="#1a1a1a">Bot Engine</text>
+<text x="300" y="230" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666" font-style="italic">intent parsing · routing · responses</text>
+
+<!-- three arrows down -->
+<line x1="245" y1="242" x2="152" y2="298" stroke="#333" stroke-width="1.5" marker-end="url(#arr)" filter="url(#f)"/>
+<line x1="300" y1="242" x2="300" y2="298" stroke="#333" stroke-width="1.5" marker-end="url(#arr)" filter="url(#f)"/>
+<line x1="355" y1="242" x2="448" y2="298" stroke="#333" stroke-width="1.5" marker-end="url(#arr)" filter="url(#f)"/>
+
+<!-- Claude API -->
+<rect x="58" y="298" width="155" height="54" rx="5" fill="#ede9fe" stroke="#333" stroke-width="1.8" filter="url(#f)"/>
+<text x="135" y="320" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a">Claude API</text>
+<text x="135" y="339" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666" font-style="italic">NLP · scoring · reports</text>
+
+<!-- CSV Ledger -->
+<rect x="223" y="298" width="155" height="54" rx="5" fill="#dcfce7" stroke="#333" stroke-width="1.8" filter="url(#f)"/>
+<text x="300" y="320" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a">CSV Ledger</text>
+<text x="300" y="339" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666" font-style="italic">local · simple · portable</text>
+
+<!-- Reminders -->
+<rect x="388" y="298" width="155" height="54" rx="5" fill="#fce7f3" stroke="#333" stroke-width="1.8" filter="url(#f)"/>
+<text x="465" y="320" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#1a1a1a">Reminders</text>
+<text x="465" y="339" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666" font-style="italic">shopping list · iCloud shared</text>
+
+<!-- arrow from Claude API to report -->
+<line x1="155" y1="352" x2="255" y2="408" stroke="#333" stroke-width="1.5" marker-end="url(#arr)" filter="url(#f)"/>
+
+<!-- Monthly Report -->
+<rect x="185" y="408" width="230" height="54" rx="5" fill="#fff7ed" stroke="#333" stroke-width="2" filter="url(#f)"/>
+<text x="300" y="430" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1a1a1a">Monthly Report</text>
+<text x="300" y="450" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#666" font-style="italic">pushed to chat · 10th of month</text>
+
+<!-- closed loop arrow -->
+<path d="M 415 435 Q 630 435 630 109 Q 630 84 490 84" stroke="#ccc" stroke-width="1.5" fill="none" stroke-dasharray="5,3" marker-end="url(#arr-gray)" filter="url(#f)"/>
+<text x="648" y="275" font-family="Georgia,serif" font-size="10" fill="#ccc" font-style="italic" transform="rotate(90,648,275)">closed loop</text>
+<!-- watermark -->
+<text x="790" y="496" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#ccc">github.com/hewxs22-oss</text>
+</svg>

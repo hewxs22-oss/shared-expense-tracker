@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 640">
+<defs>
+  <filter id="f">
+    <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="3" seed="55" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <marker id="ax" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+    <path d="M0,0 L9,3.5 L0,7 Z" fill="#888"/>
+  </marker>
+  <marker id="axl" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto">
+    <path d="M9,0 L0,3.5 L9,7 Z" fill="#888"/>
+  </marker>
+</defs>
+
+<rect width="920" height="640" fill="#faf8f2"/>
+
+<!-- ─────────────────────────────────────────────
+     LAYOUT
+     Left col:   x=200 .. x=340  (140px)
+     Right col:  x=360 .. x=500  (140px)
+     Top row:    y=100 .. y=310
+     Bottom row: y=330 .. y=540
+     Vertical axis at x=350, horizontal axis at y=320
+
+     Axis labels OUTSIDE colour blocks:
+       "high anxiety"     y=76   (above top row y=100)
+       "low anxiety"      y=576  (below bottom row y=540)
+       "← low avoidance"  x=88, right-aligned  (left of x=200, ~112px gap)
+       "high avoidance →" x=612, left-aligned   (right of x=500, ~112px gap)
+
+     Right panel separator at x=668
+───────────────────────────────────────────── -->
+
+<!-- title — centred over quadrant area mid x=350 -->
+<text x="350" y="34" text-anchor="middle" font-family="Georgia,serif" font-size="19" font-weight="bold" fill="#1a1a1a">Attachment Style → Suggested Mode</text>
+<text x="350" y="52" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#999" font-style="italic">ECR-R scores place you in a quadrant · you confirm the mode in chat</text>
+
+<!-- ── QUADRANT FILLS ── -->
+<rect x="140" y="100" width="200" height="210" rx="4" fill="#fef9c3" opacity="0.7"/>
+<rect x="360" y="100" width="200" height="210" rx="4" fill="#fee2e2" opacity="0.6"/>
+<rect x="140" y="330" width="200" height="210" rx="4" fill="#dbeafe" opacity="0.6"/>
+<rect x="360" y="330" width="200" height="210" rx="4" fill="#e5e7eb" opacity="0.6"/>
+
+<!-- ── AXES ── -->
+<!-- horizontal: x=72 → x=628 -->
+<line x1="108" y1="320" x2="578" y2="320" stroke="#888" stroke-width="1.5" marker-end="url(#ax)" marker-start="url(#axl)" filter="url(#f)"/>
+<!-- vertical: y=560 → y=82 -->
+<line x1="350" y1="560" x2="350" y2="82" stroke="#888" stroke-width="1.5" marker-end="url(#ax)" marker-start="url(#axl)" filter="url(#f)"/>
+
+<!-- ── AXIS LABELS — all outside colour blocks ── -->
+<text x="350" y="76"  text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888" font-style="italic">high anxiety</text>
+<text x="350" y="576" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#888" font-style="italic">low anxiety</text>
+<!-- left label: 60px left of colour block left edge (x=140) → right-align at x=80 -->
+<text x="128"  y="324" text-anchor="end"   font-family="Georgia,serif" font-size="11" fill="#888" font-style="italic">← low avoidance</text>
+<!-- right label: 60px right of colour block right edge (x=560) → left-align at x=620 -->
+<text x="572" y="324" text-anchor="start" font-family="Georgia,serif" font-size="11" fill="#888" font-style="italic">high avoidance →</text>
+
+<!-- ══ Q1: Anxious / Preoccupied  (top-left, centre x=240) ══ -->
+<text x="240" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#92400e">Anxious</text>
+<text x="240" y="135" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#a16207">(Preoccupied)</text>
+<text x="240" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">high anxiety · low avoidance</text>
+<rect x="185" y="158" width="110" height="28" rx="13" fill="#fde68a" stroke="#b45309" stroke-width="1.5" filter="url(#f)"/>
+<text x="240" y="177" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#713f12">suggested: B</text>
+<text x="240" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">confirm + balance shown</text>
+<text x="240" y="214" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">70% budget alert</text>
+<text x="240" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">mid-month check-in</text>
+<text x="240" y="248" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa" font-style="italic">needs reassurance</text>
+<text x="240" y="261" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa" font-style="italic">from financial data</text>
+
+<!-- ══ Q2: Fearful-Avoidant  (top-right, centre x=460) ══ -->
+<text x="460" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#991b1b">Fearful</text>
+<text x="460" y="135" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#b91c1c">(Disorganized)</text>
+<text x="460" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">high anxiety · high avoidance</text>
+<rect x="395" y="158" width="130" height="28" rx="13" fill="#fecaca" stroke="#991b1b" stroke-width="1.5" stroke-dasharray="4,2" filter="url(#f)"/>
+<text x="460" y="177" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#991b1b">discuss together</text>
+<text x="460" y="200" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">conflicting needs:</text>
+<text x="460" y="214" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">wants closeness,</text>
+<text x="460" y="228" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">fears it too</text>
+<text x="460" y="248" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#bbb" font-style="italic">no auto-suggestion</text>
+
+<!-- ══ Q3: Secure  (bottom-left, centre x=240) ══ -->
+<text x="240" y="352" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#1e3a5f">Secure</text>
+<text x="240" y="367" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">low anxiety · low avoidance</text>
+<rect x="185" y="375" width="110" height="28" rx="13" fill="#93c5fd" stroke="#1d4ed8" stroke-width="1.5" filter="url(#f)"/>
+<text x="240" y="394" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1e3a5f">suggested: A</text>
+<text x="240" y="418" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">brief confirmation</text>
+<text x="240" y="432" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">90% budget alert</text>
+<text x="240" y="446" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">monthly report</text>
+<text x="240" y="466" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa" font-style="italic">comfortable with money</text>
+<text x="240" y="479" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa" font-style="italic">doesn't need extra signals</text>
+<text x="240" y="492" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa" font-style="italic">— the "default" mode</text>
+
+<!-- ══ Q4: Dismissing-Avoidant  (bottom-right, centre x=460) ══ -->
+<text x="460" y="352" text-anchor="middle" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#374151">Dismissing</text>
+<text x="460" y="367" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">low anxiety · high avoidance</text>
+<rect x="395" y="375" width="130" height="28" rx="13" fill="#d1d5db" stroke="#4b5563" stroke-width="1.5" filter="url(#f)"/>
+<text x="460" y="394" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1f2937">suggested: C</text>
+<text x="460" y="418" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">records silently</text>
+<text x="460" y="432" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">no reply on expense</text>
+<text x="460" y="446" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#555">monthly report only</text>
+<text x="460" y="466" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa" font-style="italic">prefers emotional distance</text>
+<text x="460" y="479" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa" font-style="italic">from money conversations</text>
+
+<!-- ── RIGHT PANEL separator at x=668 ── -->
+<line x1="668" y1="62" x2="668" y2="570" stroke="#e0e0e0" stroke-width="1"/>
+
+<text x="794" y="86"  text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">ECR-R Scale</text>
+<text x="794" y="103" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">Fraley, Waller &amp; Brennan (2000)</text>
+<text x="794" y="117" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">36 questions · 7-point scale</text>
+<text x="794" y="131" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa" font-style="italic">validated academic instrument</text>
+
+<line x1="678" y1="148" x2="910" y2="148" stroke="#eee" stroke-width="1"/>
+
+<text x="794" y="168" text-anchor="middle" font-family="Georgia,serif" font-size="12" font-weight="bold" fill="#1a1a1a">Mode Summary</text>
+
+<rect x="715" y="182" width="14" height="14" rx="2" fill="#fde68a" stroke="#b45309" stroke-width="1"/>
+<text x="737" y="193" font-family="Georgia,serif" font-size="11" fill="#333">B · Reassurance</text>
+<text x="737" y="207" font-family="Georgia,serif" font-size="10" fill="#888">confirm + balance shown</text>
+
+<rect x="715" y="222" width="14" height="14" rx="2" fill="#93c5fd" stroke="#1d4ed8" stroke-width="1"/>
+<text x="737" y="233" font-family="Georgia,serif" font-size="11" fill="#333">A · Standard</text>
+<text x="737" y="247" font-family="Georgia,serif" font-size="10" fill="#888">brief confirm only</text>
+
+<rect x="715" y="262" width="14" height="14" rx="2" fill="#d1d5db" stroke="#4b5563" stroke-width="1"/>
+<text x="737" y="273" font-family="Georgia,serif" font-size="11" fill="#333">C · Silent</text>
+<text x="737" y="287" font-family="Georgia,serif" font-size="10" fill="#888">records, never replies</text>
+
+<line x1="678" y1="304" x2="910" y2="304" stroke="#eee" stroke-width="1"/>
+
+<text x="794" y="324" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#555">Key insight</text>
+<text x="794" y="342" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">Money arguments are</text>
+<text x="794" y="356" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">attachment bids in disguise.</text>
+<text x="794" y="372" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#aaa" font-style="italic">— Sue Johnson</text>
+<text x="794" y="392" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">The bot adapts to how</text>
+<text x="794" y="406" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">you relate, not just</text>
+<text x="794" y="420" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#777">what you spend.</text>
+
+<!-- watermark -->
+<text x="910" y="630" text-anchor="end" font-family="Georgia,serif" font-size="10" fill="#ccc">github.com/hewxs22-oss</text>
+</svg>

@@ -1,0 +1,281 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1120">
+<defs>
+
+  <!-- ink line wobble — strong -->
+  <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="turbulence" baseFrequency="0.018 0.06" numOctaves="3" seed="12" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+
+  <!-- text hand-wobble — very subtle -->
+  <filter id="tw" x="-2%" y="-10%" width="104%" height="120%">
+    <feTurbulence type="turbulence" baseFrequency="0.05 0.03" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="0.9" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+
+  <!-- highlighter smear -->
+  <filter id="hl" x="-3%" y="-20%" width="106%" height="140%">
+    <feGaussianBlur stdDeviation="2 4"/>
+  </filter>
+
+  <!-- pencil circle wobble -->
+  <filter id="circle" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="turbulence" baseFrequency="0.03 0.05" numOctaves="2" seed="9" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+
+  <!-- notebook ruled lines -->
+  <pattern id="ruled" x="0" y="0" width="960" height="28" patternUnits="userSpaceOnUse">
+    <line x1="0" y1="27.5" x2="960" y2="27.5" stroke="#b8cfe0" stroke-width="0.5" opacity="0.4"/>
+  </pattern>
+
+  <style>
+    text { font-family: Georgia, 'Times New Roman', serif; }
+  </style>
+</defs>
+
+<!-- ═══ PAGE ═══ -->
+<rect width="960" height="1120" fill="#f6f1e6"/>
+<rect width="960" height="1120" fill="url(#ruled)"/>
+
+<!-- warm edge shadow -->
+<rect width="960" height="1120" fill="none" stroke="#c8b88a" stroke-width="3" opacity="0.3"/>
+
+<!-- red margin line -->
+<line x1="82" y1="0" x2="82" y2="1060" stroke="#d97070" stroke-width="1.1" opacity="0.55" filter="url(#ink)"/>
+
+<!-- spiral binding holes -->
+<circle cx="42" cy="110"  r="7" fill="none" stroke="#bbb" stroke-width="1.2" opacity="0.5"/>
+<circle cx="42" cy="230" r="7" fill="none" stroke="#bbb" stroke-width="1.2" opacity="0.5"/>
+<circle cx="42" cy="350" r="7" fill="none" stroke="#bbb" stroke-width="1.2" opacity="0.5"/>
+<circle cx="42" cy="470" r="7" fill="none" stroke="#bbb" stroke-width="1.2" opacity="0.5"/>
+<circle cx="42" cy="590" r="7" fill="none" stroke="#bbb" stroke-width="1.2" opacity="0.5"/>
+<circle cx="42" cy="710" r="7" fill="none" stroke="#bbb" stroke-width="1.2" opacity="0.5"/>
+<circle cx="42" cy="830" r="7" fill="none" stroke="#bbb" stroke-width="1.2" opacity="0.5"/>
+<circle cx="42" cy="950" r="7" fill="none" stroke="#bbb" stroke-width="1.2" opacity="0.5"/>
+<circle cx="42" cy="1070" r="7" fill="none" stroke="#bbb" stroke-width="1.2" opacity="0.5"/>
+
+<!-- ═══ TITLE ═══ -->
+<path d="M 96,54 Q 280,58 540,52 Q 780,48 880,55" stroke="#1a1a1a" stroke-width="2.4" fill="none" filter="url(#ink)" opacity="0.8"/>
+<path d="M 96,58 Q 300,62 560,57 Q 780,53 880,59" stroke="#1a1a1a" stroke-width="0.8" fill="none" filter="url(#ink)" opacity="0.3"/>
+
+<text x="96" y="44" font-size="28" font-weight="bold" fill="#1a1a1a" filter="url(#tw)">Why It's Designed This Way</text>
+<text x="98" y="72" font-size="12" font-style="italic" fill="#999">reading notes · research → design</text>
+
+<!-- top-right corner note -->
+<text x="910" y="36" font-size="10" fill="#c0a878" text-anchor="end" transform="rotate(-2, 910, 36)">15 sources</text>
+<text x="910" y="50" font-size="10" fill="#c0a878" text-anchor="end" transform="rotate(-2, 910, 50)">4 themes</text>
+
+<!-- column header rule -->
+<line x1="96" y1="90" x2="910" y2="90" stroke="#c0a060" stroke-width="0.8" opacity="0.5" filter="url(#ink)"/>
+<!-- column labels -->
+<text x="240" y="104" font-size="9" fill="#b09060" letter-spacing="2" text-anchor="middle">SOURCE / BOOK</text>
+<text x="650" y="104" font-size="9" fill="#b09060" letter-spacing="2" text-anchor="middle">FINDING → DESIGN DECISION</text>
+<!-- vertical column divider at x=480 -->
+<line x1="480" y1="90" x2="480" y2="1025" stroke="#d4c090" stroke-width="0.7" opacity="0.5" filter="url(#ink)" stroke-dasharray="5,4"/>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 1 — Attachment Theory
+     ═══════════════════════════════════════════════════ -->
+
+<text x="88" y="175" font-size="80" font-weight="bold" fill="#e8d8b0" opacity="0.5" filter="url(#tw)">1</text>
+
+<rect x="95" y="112" width="220" height="22" rx="1" fill="#ffe566" opacity="0.5" filter="url(#hl)"/>
+<text x="97" y="128" font-size="15" font-weight="bold" fill="#3d2800" filter="url(#tw)">Attachment Theory</text>
+
+<!-- LEFT COLUMN — source cards -->
+<g transform="rotate(-1.2, 120, 165)">
+  <rect x="97" y="148" width="168" height="36" rx="3" fill="#fde68a" opacity="0.75" stroke="#c8a020" stroke-width="0.8"/>
+  <text x="181" y="163" font-size="10" font-weight="bold" fill="#5a3800" text-anchor="middle">Sue Johnson</text>
+  <text x="181" y="177" font-size="9" font-style="italic" fill="#7a5010" text-anchor="middle">Hold Me Tight</text>
+</g>
+
+<g transform="rotate(0.8, 120, 215)">
+  <rect x="97" y="196" width="240" height="36" rx="3" fill="#fde68a" opacity="0.65" stroke="#c8a020" stroke-width="0.8"/>
+  <text x="217" y="211" font-size="10" font-weight="bold" fill="#5a3800" text-anchor="middle">Fraley, Waller &amp; Brennan</text>
+  <text x="217" y="225" font-size="9" font-style="italic" fill="#7a5010" text-anchor="middle">ECR-R Scale (2000)</text>
+</g>
+
+<g transform="rotate(-0.5, 120, 260)">
+  <rect x="97" y="244" width="210" height="36" rx="3" fill="#fde68a" opacity="0.6" stroke="#c8a020" stroke-width="0.8"/>
+  <text x="202" y="259" font-size="10" font-weight="bold" fill="#5a3800" text-anchor="middle">Ed Coambs</text>
+  <text x="202" y="273" font-size="9" font-style="italic" fill="#7a5010" text-anchor="middle">Healthy Love &amp; Money</text>
+</g>
+
+<!-- RIGHT COLUMN — findings -->
+<text x="680" y="175" font-size="48" font-weight="bold" fill="#c8a020" opacity="0.10" text-anchor="end" transform="rotate(-3, 680, 175)">attachment</text>
+
+<text x="498" y="136" font-size="13" fill="#2c2c2c" transform="rotate(-0.6, 498, 136)" filter="url(#tw)">"Money arguments are</text>
+<text x="498" y="153" font-size="13" fill="#2c2c2c" transform="rotate(-0.6, 498, 153)" filter="url(#tw)">attachment bids in disguise."</text>
+<path d="M 498,156 Q 630,159 800,155" stroke="#2c2c2c" stroke-width="1.1" fill="none" filter="url(#ink)" opacity="0.55"/>
+<text x="510" y="169" font-size="10" font-style="italic" fill="#888">— Sue Johnson</text>
+<text x="488" y="148" font-size="14" font-weight="bold" fill="#c0392b" text-anchor="end" transform="rotate(-2, 488, 148)" filter="url(#tw)">!!</text>
+
+<text x="502" y="192" font-size="11" font-style="italic" fill="#7a5a20" transform="rotate(-0.8, 502, 192)">→ money fights = "do you care about me?"</text>
+
+<text x="498" y="216" font-size="11" fill="#555" transform="rotate(0.3, 498, 216)">ECR-R: anxiety + avoidance are continuous</text>
+<text x="498" y="230" font-size="11" fill="#555">scores, not fixed types.</text>
+<text x="510" y="244" font-size="9" font-style="italic" fill="#aaa">36 items · 7-point scale · validated instrument</text>
+
+<path d="M 498,262 Q 520,258 545,262" stroke="#444" stroke-width="1.6" fill="none" filter="url(#ink)"/>
+<path d="M 540,258 L 547,262 L 540,266" stroke="#444" stroke-width="1.6" fill="none"/>
+
+<text x="555" y="266" font-size="13" font-weight="bold" fill="#1a3a8a" filter="url(#tw)">3 modes based on ECR-R</text>
+<text x="555" y="281" font-size="10" fill="#3a5aaa">A · Standard  /  B · Reassurance  /  C · Silent</text>
+<text x="555" y="294" font-size="9" font-style="italic" fill="#aaa">you confirm in chat — not auto-assigned</text>
+
+<ellipse cx="626" cy="261" rx="76" ry="12" fill="none" stroke="#1a3a8a" stroke-width="1.3" filter="url(#circle)" opacity="0.6"/>
+
+<!-- section divider -->
+<path d="M 96,308 Q 380,304 560,309 Q 720,313 910,307" stroke="#b8a070" stroke-width="0.9" fill="none" filter="url(#ink)" stroke-dasharray="6,4" opacity="0.7"/>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 2 — Joint Finances Research
+     ═══════════════════════════════════════════════════ -->
+
+<text x="88" y="410" font-size="80" font-weight="bold" fill="#c8e8d0" opacity="0.45" filter="url(#tw)">2</text>
+
+<rect x="95" y="322" width="280" height="22" rx="1" fill="#86efac" opacity="0.45" filter="url(#hl)"/>
+<text x="97" y="338" font-size="15" font-weight="bold" fill="#064e3b" filter="url(#tw)">Joint Finances Research</text>
+
+<g transform="rotate(1, 120, 370)">
+  <rect x="97" y="352" width="260" height="36" rx="3" fill="#bbf7d0" opacity="0.7" stroke="#22c55e" stroke-width="0.7"/>
+  <text x="227" y="367" font-size="10" font-weight="bold" fill="#064e3b" text-anchor="middle">Finkel et al. · Northwestern</text>
+  <text x="227" y="381" font-size="9" font-style="italic" fill="#166534" text-anchor="middle">Common Cents (2023)</text>
+</g>
+
+<g transform="rotate(-0.7, 120, 418)">
+  <rect x="97" y="400" width="270" height="48" rx="3" fill="#bbf7d0" opacity="0.55" stroke="#22c55e" stroke-width="0.7"/>
+  <text x="232" y="415" font-size="10" font-weight="bold" fill="#064e3b" text-anchor="middle">Pooling &amp; Relationship Satisfaction</text>
+  <text x="232" y="429" font-size="9" font-style="italic" fill="#166534" text-anchor="middle">2022 · N = 38,534</text>
+  <text x="232" y="441" font-size="9" fill="#166534" text-anchor="middle">Feeling Appreciated (2022)</text>
+</g>
+
+<text x="498" y="360" font-size="12" fill="#333" transform="rotate(-0.4, 498, 360)">First causal study: joint accounts</text>
+<text x="498" y="376" font-size="12" fill="#333">prevent the normal decline in</text>
+<text x="498" y="392" font-size="12" fill="#333">relationship quality over 2 years.</text>
+<path d="M 498,363 Q 560,366 620,362" stroke="#333" stroke-width="0.9" fill="none" filter="url(#ink)" opacity="0.6"/>
+
+<text x="498" y="418" font-size="11" fill="#555">N=38,534: pooling → satisfaction via</text>
+<text x="510" y="432" font-size="10" font-style="italic" fill="#777">financial harmony · communal strength · transparency</text>
+
+<text x="498" y="452" font-size="12" fill="#333" transform="rotate(0.5, 498, 452)">Even unequal splits work —</text>
+<text x="498" y="468" font-size="12" fill="#333">if both feel <tspan font-style="italic">seen.</tspan></text>
+
+<path d="M 498,484 Q 522,480 548,484" stroke="#444" stroke-width="1.6" fill="none" filter="url(#ink)"/>
+<path d="M 543,480 L 550,484 L 543,488" stroke="#444" stroke-width="1.6" fill="none"/>
+<text x="558" y="488" font-size="13" font-weight="bold" fill="#1a3a8a" filter="url(#tw)">Shared pool as default</text>
+<text x="558" y="504" font-size="11" fill="#3a5aaa">all expenses → one budget · transparency built in</text>
+<text x="558" y="518" font-size="10" font-style="italic" fill="#aaa">Silent mode still records — visible in monthly report</text>
+
+<ellipse cx="620" cy="483" rx="68" ry="11" fill="none" stroke="#1a3a8a" stroke-width="1.3" filter="url(#circle)" opacity="0.55"/>
+
+<path d="M 96,538 Q 380,534 560,539 Q 720,543 910,537" stroke="#b8a070" stroke-width="0.9" fill="none" filter="url(#ink)" stroke-dasharray="6,4" opacity="0.7"/>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 3 — Conflict & Relationship Health
+     ═══════════════════════════════════════════════════ -->
+
+<text x="88" y="640" font-size="80" font-weight="bold" fill="#fce7f3" opacity="0.5" filter="url(#tw)">3</text>
+
+<rect x="95" y="552" width="300" height="22" rx="1" fill="#f9a8d4" opacity="0.4" filter="url(#hl)"/>
+<text x="97" y="568" font-size="15" font-weight="bold" fill="#831843" filter="url(#tw)">Conflict &amp; Relationship Health</text>
+
+<g transform="rotate(-1.5, 120, 600)">
+  <rect x="97" y="582" width="200" height="36" rx="3" fill="#fce7f3" opacity="0.8" stroke="#ec4899" stroke-width="0.7"/>
+  <text x="197" y="597" font-size="10" font-weight="bold" fill="#831843" text-anchor="middle">John Gottman</text>
+  <text x="197" y="611" font-size="9" font-style="italic" fill="#9d174d" text-anchor="middle">Seven Principles</text>
+</g>
+
+<g transform="rotate(0.9, 120, 645)">
+  <rect x="97" y="628" width="220" height="36" rx="3" fill="#fce7f3" opacity="0.65" stroke="#ec4899" stroke-width="0.7"/>
+  <text x="207" y="643" font-size="10" font-weight="bold" fill="#831843" text-anchor="middle">Myra Strober</text>
+  <text x="207" y="657" font-size="9" font-style="italic" fill="#9d174d" text-anchor="middle">Money &amp; Love</text>
+</g>
+
+<text x="620" y="620" font-size="55" font-weight="bold" fill="#f9a8d4" opacity="0.25" text-anchor="middle">5:1</text>
+
+<text x="498" y="588" font-size="13" fill="#333" transform="rotate(-0.5, 498, 588)">5:1 positive-to-negative ratio =</text>
+<text x="498" y="604" font-size="13" fill="#333">stable relationship.</text>
+<text x="510" y="618" font-size="11" font-style="italic" fill="#888">every nag is a withdrawal from the account</text>
+
+<text x="498" y="644" font-size="12" fill="#333" transform="rotate(0.4, 498, 644)">5C framework:</text>
+<text x="510" y="660" font-size="11" fill="#555">Clarify → Communicate → Choices</text>
+<text x="510" y="674" font-size="11" fill="#555">→ Check in → Consequences</text>
+<text x="510" y="688" font-size="10" font-style="italic" fill="#999">every financial decision is a relationship decision</text>
+
+<path d="M 498,704 Q 522,700 548,704" stroke="#444" stroke-width="1.6" fill="none" filter="url(#ink)"/>
+<path d="M 543,700 L 550,704 L 543,708" stroke="#444" stroke-width="1.6" fill="none"/>
+<text x="558" y="708" font-size="13" font-weight="bold" fill="#1a3a8a" filter="url(#tw)">Silent mode never nags</text>
+<text x="558" y="724" font-size="11" fill="#3a5aaa">records quietly · monthly report · zero friction</text>
+
+<path d="M 96,748 Q 380,744 560,749 Q 720,753 910,747" stroke="#b8a070" stroke-width="0.9" fill="none" filter="url(#ink)" stroke-dasharray="6,4" opacity="0.7"/>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 4 — Money Frameworks
+     ═══════════════════════════════════════════════════ -->
+
+<text x="88" y="840" font-size="80" font-weight="bold" fill="#e0e7ff" opacity="0.5" filter="url(#tw)">4</text>
+
+<rect x="95" y="762" width="230" height="22" rx="1" fill="#a5b4fc" opacity="0.4" filter="url(#hl)"/>
+<text x="97" y="778" font-size="15" font-weight="bold" fill="#1e1b4b" filter="url(#tw)">Money Frameworks</text>
+
+<g transform="rotate(1.8, 120, 800)">
+  <rect x="97" y="792" width="200" height="30" rx="3" fill="#e0e7ff" opacity="0.8" stroke="#6366f1" stroke-width="0.7"/>
+  <text x="197" y="811" font-size="9" fill="#1e1b4b" text-anchor="middle">Ramit Sethi · Money for Couples</text>
+</g>
+<g transform="rotate(-1.2, 120, 828)">
+  <rect x="97" y="826" width="220" height="30" rx="3" fill="#e0e7ff" opacity="0.7" stroke="#6366f1" stroke-width="0.7"/>
+  <text x="207" y="845" font-size="9" fill="#1e1b4b" text-anchor="middle">Elizabeth Warren · All Your Worth</text>
+</g>
+<g transform="rotate(0.6, 120, 856)">
+  <rect x="97" y="858" width="200" height="30" rx="3" fill="#e0e7ff" opacity="0.6" stroke="#6366f1" stroke-width="0.7"/>
+  <text x="197" y="877" font-size="9" fill="#1e1b4b" text-anchor="middle">David Bach · Smart Couples Finish Rich</text>
+</g>
+<g transform="rotate(-0.8, 120, 892)">
+  <rect x="97" y="892" width="200" height="30" rx="3" fill="#e0e7ff" opacity="0.55" stroke="#6366f1" stroke-width="0.7"/>
+  <text x="197" y="911" font-size="9" fill="#1e1b4b" text-anchor="middle">Vicki Robin · Your Money or Your Life</text>
+</g>
+<g transform="rotate(1.3, 120, 926)">
+  <rect x="97" y="926" width="240" height="30" rx="3" fill="#e0e7ff" opacity="0.5" stroke="#6366f1" stroke-width="0.7"/>
+  <text x="217" y="945" font-size="9" fill="#1e1b4b" text-anchor="middle">Gillath et al. · SAAM Scale (2009)</text>
+</g>
+<g transform="rotate(-0.5, 120, 960)">
+  <rect x="97" y="960" width="240" height="30" rx="3" fill="#e0e7ff" opacity="0.45" stroke="#6366f1" stroke-width="0.7"/>
+  <text x="217" y="979" font-size="9" fill="#1e1b4b" text-anchor="middle">Klontz &amp; Britt · KMSI-R Scale (2013)</text>
+</g>
+<g transform="rotate(1, 120, 994)">
+  <rect x="97" y="994" width="220" height="30" rx="3" fill="#e0e7ff" opacity="0.4" stroke="#6366f1" stroke-width="0.7"/>
+  <text x="207" y="1013" font-size="9" fill="#1e1b4b" text-anchor="middle">Modigliani · Life-Cycle Hypothesis</text>
+</g>
+
+<text x="498" y="800" font-size="12" fill="#333" transform="rotate(-0.3, 498, 800)">CSP: fixed / invest / save /</text>
+<text x="498" y="816" font-size="12" fill="#333">guilt-free spending.</text>
+<path d="M 498,803 Q 530,806 562,802" stroke="#333" stroke-width="0.9" fill="none" filter="url(#ink)" opacity="0.55"/>
+
+<text x="498" y="840" font-size="12" fill="#333">50/30/20 as ratio reference.</text>
+<text x="498" y="858" font-size="12" fill="#333" transform="rotate(0.4, 498, 858)">Latte factor: small recurring costs</text>
+<text x="498" y="874" font-size="12" fill="#333">compound into large annual totals.</text>
+
+<text x="910" y="858" font-size="10" font-style="italic" fill="#b09060" text-anchor="end" transform="rotate(1.5, 910, 858)">e.g. $5/day = $1,825/yr</text>
+<path d="M 840,854 Q 820,850 800,856" stroke="#b09060" stroke-width="1" fill="none" filter="url(#ink)" opacity="0.6"/>
+
+<text x="498" y="900" font-size="12" fill="#333">SAAM: 21-item state attachment measure.</text>
+<text x="510" y="914" font-size="10" font-style="italic" fill="#888">captures mood-level security, not just trait</text>
+
+<text x="498" y="938" font-size="12" fill="#333">KMSI-R: money scripts (avoidance,</text>
+<text x="498" y="952" font-size="12" fill="#333">worship, status, vigilance).</text>
+<text x="510" y="966" font-size="10" font-style="italic" fill="#888">explains why partners fight about the same $20</text>
+
+<text x="498" y="990" font-size="12" fill="#333">Life-cycle: spending peaks mid-life,</text>
+<text x="498" y="1004" font-size="12" fill="#333">saving is smoothing consumption over time.</text>
+
+<ellipse cx="520" cy="799" rx="22" ry="10" fill="none" stroke="#1e1b4b" stroke-width="1.2" filter="url(#circle)" opacity="0.5"/>
+
+<!-- ═══ FOOTER ═══ -->
+<line x1="96" y1="1032" x2="910" y2="1032" stroke="#c0a060" stroke-width="0.7" opacity="0.4" filter="url(#ink)"/>
+
+<text x="96" y="1048" font-size="11" font-style="italic" fill="#888" transform="rotate(-0.3, 96, 1048)">The bot adapts to how you relate, not just what you spend.</text>
+<text x="910" y="1048" font-size="10" fill="#ccc" text-anchor="end">github.com/hewxs22-oss</text>
+
+</svg>
