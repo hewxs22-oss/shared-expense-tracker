@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Attachment Style Questionnaire</title>
+<style>
+  body { font-family: sans-serif; max-width: 400px; margin: 120px auto; padding: 0 20px; background: #fff; color: #000; text-align: center; }
+  h1 { font-size: 18px; margin-bottom: 8px; }
+  p { font-size: 14px; color: #666; margin-bottom: 48px; }
+  .buttons { display: flex; gap: 16px; justify-content: center; }
+  a.btn { display: block; width: 120px; padding: 14px 0; border: 1px solid #000; font-size: 15px; text-decoration: none; color: #000; border-radius: 4px; }
+  a.btn:hover { background: #000; color: #fff; }
+</style>
+</head>
+<body>
+<h1>Money Attachment Style Questionnaire</h1>
+<p>Select your user to begin.</p>
+<div class="buttons">
+  {% for key in users %}
+  <a class="btn" href="/form?user={{ key }}">User {{ loop.index }}</a>
+  {% endfor %}
+</div>
+</body>
+</html>

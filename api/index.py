@@ -341,6 +341,11 @@ def send_to_feishu(text):
     )
 
 
+@app.route("/")
+def index():
+    return render_template("index.html", users=CONFIG["users"])
+
+
 @app.route("/form")
 def form():
     user = request.args.get("user", "").upper()
