@@ -14,6 +14,8 @@ Most expense-splitting apps treat money as a math problem. This one treats it as
 
 After both partners complete a short questionnaire (ECR-R + KMSI-R), the bot switches into one of three modes:
 
+![Attachment Modes](assets/attachment-modes.svg)
+
 | Mode | Best for | Behavior |
 |------|----------|----------|
 | **Standard** | Secure attachment | Brief confirmation on each expense |
@@ -26,9 +28,13 @@ The questionnaire measures two things:
 
 Both are validated academic scales, not custom quizzes.
 
+![System Modes](assets/system-modes.svg)
+
 ---
 
 ## Architecture
+
+![System Architecture](assets/architecture.svg)
 
 ```
 Feishu group message
@@ -51,6 +57,8 @@ The questionnaire form runs separately on Vercel (free tier), using Vercel KV to
 ---
 
 ## Features
+
+![Questionnaire Flow](assets/questionnaire-flow.svg)
 
 - **Natural language expense logging** — "grabbed coffee 28" gets parsed and categorized automatically
 - **Proportional cost-splitting** — configurable ratio (e.g. 35/65) based on income difference
@@ -149,6 +157,8 @@ fill out the questionnaire
 
 ## Research backing
 
+![Research Notes](assets/research-notes.svg)
+
 The design draws on 15 sources across relationship psychology and personal finance:
 
 | Source | Contribution |
@@ -164,7 +174,7 @@ The design draws on 15 sources across relationship psychology and personal finan
 | Finkel et al., *Common Cents* (2023) | First causal study: joint accounts prevent the normal decline in relationship quality over the first two years of marriage |
 | Elizabeth Warren, *All Your Worth* | 50/30/20 rule as the budget framework for the spending values conversation system |
 
-Full citations and design rationale in [`设计总结.md`](设计总结.md) (Chinese).
+Full citations and design rationale in [`设计总结.md`](设计总结.md) (Chinese) and [`design-summary.md`](design-summary.md) (English).
 
 ---
 

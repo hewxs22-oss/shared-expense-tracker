@@ -57,7 +57,7 @@ Replace the values below with your actual setup.
 ## Shopping Intent Detection
 
 - Intent is inferred semantically — no fixed phrasing required
-- "We're out of laundry detergent" / "Almost out of cat food" → writes a 🛒 reminder to the Apple Reminders "Inbox" list (e.g. "🛒 Cat food"); visible to both; not logged as an expense
+- "We're out of laundry detergent" / "Almost out of cat food" → writes a 🛒 reminder to the configured Apple Reminders list (e.g. "🛒 Cat food"); visible to both; not logged as an expense
 - "Bought laundry detergent ¥50" → logged as an expense; no reminder created
 
 ---
@@ -329,6 +329,7 @@ shared-expense-tracker/
 │   ├── system_mode.py         # System mode persistence (A Standard / B Reassurance / C Silent)
 │   └── keychain.py            # macOS Keychain secret management
 ├── templates/
+│   ├── index.html             # Questionnaire landing page (User 1 / User 2 selection)
 │   ├── questionnaire.html     # Questionnaire page
 │   └── submitted.html         # Submission confirmation page
 ├── data/
@@ -352,9 +353,9 @@ shared-expense-tracker/
 
 ### Shopping Intent Sync
 
-When the bot detects a shopping intent, it writes to the Apple Reminders "Inbox" list via AppleScript, with a 🛒 prefix on the title (e.g. "🛒 Cat food").
+When the bot detects a shopping intent, it writes to the configured Apple Reminders list via AppleScript, with a 🛒 prefix on the title (e.g. "🛒 Cat food").
 
-**Why write to Inbox instead of a dedicated shopping list:** Inbox is already the unified catch-all for "things not yet done" — shopping needs fit that definition exactly. The 🛒 prefix makes shopping tasks visually distinct from other tasks at a glance, without requiring a separate list to check. Shopping tasks can also be directly scheduled into today's flexible time by Boss Plan.
+**Why write to a dedicated list instead of creating a new shopping list:** The configured list is already the unified catch-all for "things not yet done" — shopping needs fit that definition exactly. The 🛒 prefix makes shopping tasks visually distinct from other tasks at a glance, without requiring a separate list to check. Shopping tasks can also be directly scheduled into today's flexible time by Boss Plan.
 
 **One-time manual setup:**
 - The Inbox list has been shared with both participants (W + J) via iCloud
@@ -405,7 +406,7 @@ Feishu group messages are **stored in structured form**, not as raw full-text lo
 |-------|---------|-------------|--------|
 | Phase 1 | Core expense logging | Feishu message → Claude parsing → CSV write → confirmation reply | ✅ Done |
 | Phase 2 | Queries and monthly report | On-demand balance / category queries + auto monthly report on the 10th | ✅ Done |
-| Phase 3 | Shopping intent detection | Detect shopping needs → write to Apple Reminders Inbox | ✅ Done |
+| Phase 3 | Shopping intent detection | Detect shopping needs → write to configured Apple Reminders list | ✅ Done |
 | Phase 4 | Spending values dialogue system | ECR-R (36 items) + KMSI-R (32 items) questionnaire + comparison report pushed to Feishu | ✅ Done (pending completion) |
 | Phase 5 | Money attachment style | Reply "选A/B/C" in group to switch system mode; bot behavior changes accordingly | ✅ Done (pending questionnaire results) |
 
