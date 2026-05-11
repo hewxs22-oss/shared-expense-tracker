@@ -11,5 +11,6 @@ dependencies = [
     "lark-oapi>=1.6.2",
     "python-dotenv>=1.2.2",
     "requests>=2.33.1",
+    "upstash-redis>=1.1.0",
     "schedule>=1.2.2",
 ]
