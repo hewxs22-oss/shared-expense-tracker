@@ -262,8 +262,11 @@ def kmsi_dominant(kmsi):
 
 
 def build_report(data):
+    from datetime import datetime, timezone, timedelta
+    cst = timezone(timedelta(hours=8))
+    now = datetime.now(cst).strftime("%Y年%m月%d日 %H:%M")
     users = CONFIG["users"]
-    lines = ["📊 金钱依恋风格报告\n"]
+    lines = [f"📊 金钱依恋风格报告\n🕐 {now}\n"]
 
     for user_key, user_name in users.items():
         if user_key not in data:
@@ -323,13 +326,16 @@ def send_to_feishu(text):
     app_secret = os.environ.get("FEISHU_APP_SECRET")
     chat_id = os.environ.get("FEISHU_CHAT_ID")
 
+    print(f"[feishu] app_id={app_id!r} chat_id={chat_id!r}")
+
     token_resp = requests.post(
         "https://open.feishu.cn/open-apis/auth/v3/tenant_access_token/internal",
         json={"app_id": app_id, "app_secret": app_secret},
     ).json()
     token = token_resp.get("tenant_access_token")
+    print(f"[feishu] token={'ok' if token else 'FAILED'} resp_code={token_resp.get('code')}")
 
-    requests.post(
+    msg_resp = requests.post(
         "https://open.feishu.cn/open-apis/im/v1/messages",
         params={"receive_id_type": "chat_id"},
         headers={"Authorization": f"Bearer {token}"},
@@ -338,7 +344,8 @@ def send_to_feishu(text):
             "msg_type": "text",
             "content": json.dumps({"text": text}),
         },
-    )
+    ).json()
+    print(f"[feishu] send code={msg_resp.get('code')} msg={msg_resp.get('msg')}")
 
 
 @app.route("/")

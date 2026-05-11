@@ -30,13 +30,14 @@ SYSTEM_PROMPT = """你是一个共同记账系统的语义解析器。
 - J（{j_name}）：高收入方，承担65%
 
 请返回 JSON 格式，包含以下字段：
-- intent: "expense"（记账）| "query"（查询）| "shopping"（购物意图）| "ignore"（忽略）
+- intent: "expense"（记账）| "query"（查询）| "shopping"（购物意图）| "mode_select"（选择系统模式）| "ignore"（忽略）
 - amount: 金额（数字，仅 expense 时有效）
 - category: 分类名称（仅 expense 时有效）
 - category_type: "共同" | "个人" | "共同不入池"（仅 expense 时有效）
 - item: 消费项目描述
 - shopping_item: 购物清单项目（仅 shopping 时有效）
 - query_type: "balance"（余额）| "monthly"（月度）| "category"（分类）（仅 query 时有效）
+- mode: "A" | "B" | "C"（仅 mode_select 时有效）
 - dialogue_context: 对话上下文信号（可选）
   - has_justification: 是否包含解释性语言
   - follow_up_needed: 是否需要追踪后续回应
@@ -45,8 +46,12 @@ SYSTEM_PROMPT = """你是一个共同记账系统的语义解析器。
 1. "买了XX 金额" → expense
 2. "XX没了"、"XX快用完了"、"要买XX" → shopping
 3. "这个月花了多少"、"还剩多少"、"余额" → query
-4. 其他闲聊 → ignore
-5. 固定支出（房租、水电）只有明确说"交了房租"才记，不自动记
+4. 消息中明确表达选择系统模式 → mode_select，mode 字段填 A/B/C
+   - A（标准模式）：「选A」「我选A」「我都选A」「第一个」「A模式」「标准」
+   - B（安心模式）：「选B」「第二个」「B模式」「安心」
+   - C（静默模式）：「选C」「第三个」「C模式」「静默」
+5. 其他闲聊 → ignore
+6. 固定支出（房租、水电）只有明确说"交了房租"才记，不自动记
 
 只返回 JSON，不要其他文字。""".format(
     categories=json.dumps(CATEGORIES, ensure_ascii=False, indent=2),

@@ -246,8 +246,11 @@ def kmsi_dominant(kmsi):
 
 def build_report(data):
     """生成飞书推送的文字报告"""
+    from datetime import datetime, timezone, timedelta
+    cst = timezone(timedelta(hours=8))
+    now = datetime.now(cst).strftime("%Y年%m月%d日 %H:%M")
     users = CONFIG["users"]
-    lines = ["📊 金钱依恋风格报告\n"]
+    lines = [f"📊 金钱依恋风格报告\n🕐 {now}\n"]
 
     for user_key, user_name in users.items():
         if user_key not in data:

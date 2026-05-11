@@ -30,18 +30,16 @@ def handle(sender_name: str, text: str) -> str:
     sender = NAME_TO_KEY.get(sender_name, "W")
     mode = get_mode()
 
-    # 模式选择
-    import re
-    mode_match = re.match(r'^选([ABC])$', text.strip())
-    if mode_match:
-        chosen = mode_match.group(1)
-        set_mode(chosen)
-        return f"✓ 已切换到{MODES[chosen]}，下次记账起生效。"
-
     parsed = parse_message(text, sender)
     intent = parsed.get("intent", "ignore")
 
-    if intent == "expense":
+    if intent == "mode_select":
+        chosen = parsed.get("mode", "").upper()
+        if chosen in MODES:
+            set_mode(chosen)
+            return f"✓ 已切换到{MODES[chosen]}，下次记账起生效。"
+
+    elif intent == "expense":
         record = add_expense(parsed)
         cat_type = record["category_type"]
         amount = record["amount"]
