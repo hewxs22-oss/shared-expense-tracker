@@ -2,7 +2,6 @@ data/
 form_data.json
 .env
 config.json
-CLAUDE.md
 __pycache__/
 *.pyc
 .DS_Store

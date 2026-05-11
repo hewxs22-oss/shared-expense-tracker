@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.shared-expense-tracker.questionnaire-reminder</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/path/to/uv</string>
+        <string>run</string>
+        <string>python</string>
+        <string>/path/to/shared-expense-tracker/scripts/remind_questionnaire.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/path/to/shared-expense-tracker</string>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Year</key>
+        <integer>2026</integer>
+        <key>Month</key>
+        <integer>11</integer>
+        <key>Day</key>
+        <integer>12</integer>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/path/to/shared-expense-tracker/data/questionnaire_reminder.log</string>
+    <key>StandardErrorPath</key>
+    <string>/path/to/shared-expense-tracker/data/questionnaire_reminder.log</string>
+</dict>
+</plist>
