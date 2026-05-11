@@ -112,6 +112,8 @@ uv sync
 
 ### 4. Deploy the questionnaire to Vercel
 
+A hosted version is available at https://shared-expense-tracker-mu.vercel.app — you can use it directly or deploy your own.
+
 ```bash
 # Push to GitHub, then import the repo at vercel.com/new
 # After deploy:
