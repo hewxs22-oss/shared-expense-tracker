@@ -17,15 +17,12 @@ from ledger import add_expense, get_balance_text, get_monthly_summary
 from reminders import add_shopping_item
 from system_mode import get_mode, set_mode, MODES
 
-# 发送者姓名 → W/J 映射
-NAME_TO_KEY = {
-    "W": "W",
-    "J": "J",
-}
-
 CONFIG_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config.json")
 with open(CONFIG_PATH) as f:
     CONFIG = json.load(f)
+
+# 发送者姓名 → W/J 映射（从 config.json 读取，避免硬编码）
+NAME_TO_KEY = {name: key for key, name in CONFIG["users"].items()}
 
 
 def handle(sender_name: str, text: str) -> str:
@@ -102,14 +99,17 @@ def handle(sender_name: str, text: str) -> str:
 
     elif intent == "ignore":
         if "开始填写问卷" in text or "填问卷" in text:
-            host = CONFIG.get("form", {}).get("host", "192.168.1.3")
-            port = CONFIG.get("form", {}).get("port", 5001)
+            base_url = CONFIG.get("form", {}).get("vercel_url", "").rstrip("/")
+            if not base_url:
+                host = CONFIG.get("form", {}).get("host", "192.168.1.3")
+                port = CONFIG.get("form", {}).get("port", 5001)
+                base_url = f"http://{host}:{port}"
             w_name = CONFIG["users"]["W"]
             j_name = CONFIG["users"]["J"]
             return (
                 f"请各自独立填写，不要互相讨论：\n"
-                f"{w_name}：http://{host}:{port}/form?user=W\n"
-                f"{j_name}：http://{host}:{port}/form?user=J"
+                f"{w_name}：{base_url}/form?user=W\n"
+                f"{j_name}：{base_url}/form?user=J"
             )
 
     return ""
