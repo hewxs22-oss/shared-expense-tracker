@@ -44,12 +44,16 @@
   <span data-lang="zh">
     请独立填写，不要和对方讨论后再作答。<br>
     共 68 道题，大约需要 10-15 分钟。<br>
-    每道题请根据你的真实感受作答，没有对错之分。
+    每道题请根据你的真实感受作答，没有对错之分。<br>
+    <br>
+    这份问卷的价值，来自你的真实。你们之间的关系，也值得这份真实。
   </span>
   <span data-lang="en">
     Please fill this out independently — do not discuss with your partner first.<br>
     68 questions total, approximately 10–15 minutes.<br>
-    Answer based on how you genuinely feel. There are no right or wrong answers.
+    Answer based on how you genuinely feel. There are no right or wrong answers.<br>
+    <br>
+    The value of this questionnaire comes from your honesty. Your relationship deserves it.
   </span>
 </div>
 
@@ -74,8 +78,9 @@
 
   {% for q in ecr_questions %}
   {% set qnum = loop.index %}
+  {% set qzh = ecr_questions_zh[loop.index0] %}
   <div class="question">
-    <p>{{ qnum }}. {{ q }}</p>
+    <p>{{ qnum }}. <span data-lang="en">{{ q }}</span><span data-lang="zh">{{ qzh }}</span></p>
     <div class="scale">
       {% for i in range(1, 8) %}
       <label>
@@ -109,8 +114,9 @@
 
   {% for q in kmsi_questions %}
   {% set qnum = loop.index %}
+  {% set qzh = kmsi_questions_zh[loop.index0] %}
   <div class="question">
-    <p>{{ qnum + 36 }}. {{ q }}</p>
+    <p>{{ qnum + 36 }}. <span data-lang="en">{{ q }}</span><span data-lang="zh">{{ qzh }}</span></p>
     <div class="scale">
       {% for i in range(1, 7) %}
       <label>
