@@ -208,4 +208,4 @@ shared-expense-tracker/
 
 ## License
 
-MIT
+AGPL-3.0. You may use and modify this code, but any derivative work must also be open-sourced under AGPL. Commercial use by third parties is not permitted. The original author retains the right to commercially license this software separately.
