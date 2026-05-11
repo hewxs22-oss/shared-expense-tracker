@@ -82,7 +82,8 @@ def handle(sender_name: str, text: str) -> str:
         item = parsed.get("shopping_item", text)
         success = add_shopping_item(item)
         if success:
-            return f"✓ 已加入暂存库：🛒 {item}"
+            list_name = CONFIG["reminders"]["list_name"]
+            return f"✓ 已加入{list_name}：🛒 {item}"
         else:
             return f"✓ 记下了：{item}（提醒事项写入失败，请手动添加）"
 

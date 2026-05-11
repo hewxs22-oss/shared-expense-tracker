@@ -14,7 +14,7 @@ PREFIX = CONFIG["reminders"]["shopping_prefix"]
 
 def add_shopping_item(item: str) -> bool:
     """
-    将购物项目写入苹果提醒事项暂存库。
+    将购物项目写入苹果提醒事项（列表名由 config.json 配置）。
 
     Args:
         item: 购物项目名称（如"猫粮"）
@@ -44,7 +44,7 @@ end tell
 
 def get_shopping_list() -> list:
     """
-    获取暂存库中所有购物项目（以 🛒 开头的）。
+    获取提醒事项列表中所有购物项目（以配置前缀开头的）。
 
     Returns:
         list: 购物项目名称列表

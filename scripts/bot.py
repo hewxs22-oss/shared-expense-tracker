@@ -158,7 +158,8 @@ def handle_message(data: P2ImMessageReceiveV1) -> None:
         item = parsed.get("shopping_item", text)
         success = add_shopping_item(item)
         if success:
-            reply_message(message_id, f"✓ 已加入暂存库：🛒 {item}")
+            list_name = CONFIG["reminders"]["list_name"]
+            reply_message(message_id, f"✓ 已加入{list_name}：🛒 {item}")
         else:
             reply_message(message_id, f"✓ 记下了：{item}（提醒事项写入失败，请手动添加）")
 
