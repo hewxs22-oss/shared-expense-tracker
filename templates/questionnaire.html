@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金钱依恋风格问卷</title>
+<style>
+  body { font-family: sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; background: #fff; color: #000; }
+  h1 { font-size: 20px; }
+  h2 { font-size: 16px; margin-top: 40px; border-bottom: 1px solid #000; padding-bottom: 6px; }
+  .notice { background: #f5f5f5; padding: 12px; margin: 20px 0; font-size: 14px; }
+  .question { margin: 20px 0; }
+  .question p { margin: 0 0 8px 0; font-size: 14px; }
+  .scale { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .scale label { display: flex; flex-direction: column; align-items: center; font-size: 12px; gap: 4px; cursor: pointer; }
+  .scale-labels { display: flex; justify-content: space-between; font-size: 11px; color: #666; margin-top: 4px; }
+  button { margin-top: 40px; padding: 10px 30px; font-size: 16px; cursor: pointer; }
+  .error { color: red; font-size: 13px; display: none; }
+  .section-note { font-size: 13px; color: #444; margin: 10px 0 20px 0; }
+</style>
+</head>
+<body>
+
+<h1>金钱依恋风格问卷</h1>
+<p>你好，<strong>{{ user_name }}</strong>。</p>
+
+<div class="notice">
+  请独立填写，不要和对方讨论后再作答。<br>
+  共 68 道题，大约需要 10-15 分钟。<br>
+  每道题请根据你的真实感受作答，没有对错之分。
+</div>
+
+<form id="questionnaire" method="POST" action="/submit">
+  <input type="hidden" name="user" value="{{ user }}">
+
+  <!-- ECR-R -->
+  <h2>第一部分：亲密关系感受（共 36 题）</h2>
+  <p class="section-note">以下问题关于你在亲密关系中的感受。请根据你<strong>通常</strong>的感受作答，而不是某一次特定的经历。<br>
+  评分：1 = 完全不同意，7 = 完全同意</p>
+
+  {% for q in ecr_questions %}
+  <div class="question">
+    <p>{{ loop.index }}. {{ q }}</p>
+    <div class="scale">
+      {% for i in range(1, 8) %}
+      <label>
+        <input type="radio" name="ecr_{{ loop.index }}" value="{{ i }}" required>
+        {{ i }}
+      </label>
+      {% endfor %}
+    </div>
+    <div class="scale-labels">
+      <span>完全不同意</span>
+      <span>完全同意</span>
+    </div>
+  </div>
+  {% endfor %}
+
+  <!-- KMSI-R -->
+  <h2>第二部分：金钱信念（共 32 题）</h2>
+  <p class="section-note">以下问题关于你对金钱的看法和信念。<br>
+  评分：1 = 强烈不同意，6 = 强烈同意</p>
+
+  {% for q in kmsi_questions %}
+  <div class="question">
+    <p>{{ loop.index + 36 }}. {{ q }}</p>
+    <div class="scale">
+      {% for i in range(1, 7) %}
+      <label>
+        <input type="radio" name="kmsi_{{ loop.index }}" value="{{ i }}" required>
+        {{ i }}
+      </label>
+      {% endfor %}
+    </div>
+    <div class="scale-labels">
+      <span>强烈不同意</span>
+      <span>强烈同意</span>
+    </div>
+  </div>
+  {% endfor %}
+
+  <p class="error" id="error-msg">请完成所有题目后再提交。</p>
+  <button type="submit">提交问卷</button>
+</form>
+
+<script>
+document.getElementById('questionnaire').addEventListener('submit', function(e) {
+  const radios = this.querySelectorAll('input[type="radio"]');
+  const names = new Set();
+  radios.forEach(r => names.add(r.name));
+  let allAnswered = true;
+  names.forEach(name => {
+    if (!this.querySelector(`input[name="${name}"]:checked`)) {
+      allAnswered = false;
+    }
+  });
+  if (!allAnswered) {
+    e.preventDefault();
+    document.getElementById('error-msg').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+});
+</script>
+
+</body>
+</html>

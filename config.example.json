@@ -1,0 +1,36 @@
+{
+  "users": {
+    "W": "User1",
+    "J": "User2"
+  },
+  "open_id_mapping": {
+    "ou_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx": "W",
+    "ou_yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy": "J"
+  },
+  "split_ratio": {
+    "W": 0.5,
+    "J": 0.5
+  },
+  "pool_amount": 5000,
+  "feishu": {
+    "group_name": "群名称",
+    "app_id": "",
+    "app_secret": "",
+    "chat_id": ""
+  },
+  "reminders": {
+    "list_name": "暂存库",
+    "shopping_prefix": "🛒"
+  },
+  "report": {
+    "push_day": 10
+  },
+  "bot": {
+    "port": 5000
+  },
+  "form": {
+    "port": 5001,
+    "host": "192.168.1.x",
+    "vercel_url": ""
+  }
+}

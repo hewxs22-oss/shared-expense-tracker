@@ -1,0 +1,10 @@
+data/
+form_data.json
+.env
+config.json
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+uv.lock
+.claude/
