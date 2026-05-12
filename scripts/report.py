@@ -23,18 +23,11 @@ OPEN_QUESTIONS = [
 
 
 def build_monthly_report(year: int = None, month: int = None) -> str:
-    """
-    生成月度消费报告文字。
+    """生成账期消费报告文字。"""
+    summary = get_monthly_summary()
+    period_start = summary["period_start"]
 
-    Returns:
-        str: 飞书消息文字
-    """
-    now = datetime.now()
-    year = year or now.year
-    month = month or now.month
-    summary = get_monthly_summary(year, month)
-
-    lines = [f"📊 {year}年{month}月 消费报告\n"]
+    lines = [f"📊 消费报告（{period_start} 起）\n"]
 
     # 总览
     pool = summary["pool_amount"]

@@ -91,7 +91,7 @@ def handle(sender_name: str, text: str) -> str:
             return get_balance_text()
         elif query_type == "monthly":
             summary = get_monthly_summary()
-            lines = [f"本月消费 {summary['total']} 元，剩余 {summary['remaining']} 元"]
+            lines = [f"本期消费 {summary['total']} 元，剩余 {summary['remaining']} 元（{summary['period_start']} 起）"]
             for cat, amount in list(summary["by_category"].items())[:5]:
                 lines.append(f"  {cat}：{amount} 元")
             return "\n".join(lines)

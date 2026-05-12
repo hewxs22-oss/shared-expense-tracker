@@ -73,23 +73,29 @@ def log_message(parsed: dict):
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 
+def get_billing_period(now=None):
+    """返回当前账期的起止时间（以 push_day 为每月起始日）。"""
+    from datetime import timedelta
+    now = now or datetime.now()
+    start_day = CONFIG.get("report", {}).get("push_day", 12)
+    if now.day >= start_day:
+        period_start = now.replace(day=start_day, hour=0, minute=0, second=0, microsecond=0)
+    else:
+        # 上个月的 start_day
+        first_of_month = now.replace(day=1)
+        prev_month_end = first_of_month - timedelta(days=1)
+        period_start = prev_month_end.replace(day=start_day, hour=0, minute=0, second=0, microsecond=0)
+    return period_start
+
+
 def get_monthly_summary(year: int = None, month: int = None) -> dict:
     """
-    获取月度消费汇总。
-
-    Returns:
-        dict: {
-            "total": 总金额,
-            "pool_amount": 池子总额,
-            "remaining": 剩余,
-            "by_category": {分类: 金额},
-            "latte_factors": [(分类, 次数, 总额)],  # 高频小额
-        }
+    获取当前账期消费汇总（以 config.json 中 push_day 为每月起始日）。
+    year/month 参数保留兼容性但不再使用。
     """
     init_ledger()
     now = datetime.now()
-    year = year or now.year
-    month = month or now.month
+    period_start = get_billing_period(now)
 
     total = 0
     by_category = {}
@@ -99,7 +105,7 @@ def get_monthly_summary(year: int = None, month: int = None) -> dict:
         reader = csv.DictReader(f)
         for row in reader:
             ts = datetime.fromisoformat(row["timestamp"])
-            if ts.year != year or ts.month != month:
+            if ts < period_start:
                 continue
             if row["category_type"] != "共同":
                 continue
@@ -121,8 +127,7 @@ def get_monthly_summary(year: int = None, month: int = None) -> dict:
     latte_factors.sort(key=lambda x: x[2], reverse=True)
 
     return {
-        "year": year,
-        "month": month,
+        "period_start": period_start.strftime("%Y-%m-%d"),
         "total": round(total, 2),
         "pool_amount": pool,
         "remaining": round(remaining, 2),
