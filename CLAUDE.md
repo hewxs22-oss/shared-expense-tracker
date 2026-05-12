@@ -59,6 +59,8 @@ uv run python scripts/ledger_handler.py "发送者姓名" "消息内容"
 - 本地 CSV 存储
 - AppleScript（苹果提醒事项集成）
 - Flask（问卷服务，Vercel 部署；本地 form_server.py 备用）
+- Vercel + Upstash Redis（问卷云端部署与数据存储）
+- lark-oapi SDK（飞书 bot 备用驱动）
 - macOS Keychain（API keys 存储，via keychain.py）
 
 ## 分阶段实现
