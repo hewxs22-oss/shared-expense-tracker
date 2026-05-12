@@ -2,6 +2,8 @@
 
 A Lark (Feishu) bot for couples to track shared expenses — designed around relationship research, not just accounting.
 
+Powered by [Claude Code](https://claude.ai/code) + [cc-connect](https://github.com/chenhg5/cc-connect) + [Claude API](https://anthropic.com). Built with [lark-oapi](https://github.com/larksuite/oapi-sdk-python).
+
 Most expense-splitting apps treat money as a math problem. This one treats it as a relationship problem. The bot adapts its behavior to each couple's attachment style, based on validated psychological scales.
 
 > Bot messages and the questionnaire UI are currently in Chinese. The architecture and logic are fully documented in English here.
